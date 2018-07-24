@@ -1,0 +1,11 @@
+package com.moxie.client.model;
+
+/* compiled from: TbsSdkJava */
+public enum FragmentEnum {
+    MX_CLIENT_FRAGMENT_IMPORTING,
+    MX_CLIENT_FRAGMENT_IMPORTING_EC,
+    MX_CLIENT_FRAGMENT_AGREEMENT,
+    MX_CLIENT_FRAGMENT_SELECTLIST,
+    MX_CLIENT_FRAGMENT_IMPORT,
+    MX_CLIENT_FRAGMENT_IMPORT_MX
+}

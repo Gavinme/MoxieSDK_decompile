@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:drawable="@drawable/moxie_mailimport_bg_gray_left_bottom_corner_5dip" android:state_pressed="true"/>
+    <!-- pressed -->
+    <item android:drawable="@drawable/moxie_mailimport_bg_white_left_bottom_corner_5dip" android:state_enabled="true"/>
+    <!-- default -->
+
+</selector>

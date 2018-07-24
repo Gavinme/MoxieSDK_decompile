@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/Moxie_Client_RelativeLayout_Title"
+    android:layout_width="match_parent"
+    android:layout_height="48dp"
+    android:gravity="center_vertical">
+
+    <TextView
+        android:id="@+id/TextView_Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:maxLength="10"
+        android:singleLine="true"
+        android:text=""
+        android:textColor="@color/moxie_mailimport_color_white"
+        android:textSize="17sp" />
+
+
+    <RelativeLayout
+        android:id="@+id/Moxie_Client_RelativeLayout_Title_Left"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:paddingLeft="10dp"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true">
+
+        <ImageView
+            android:id="@+id/Moxie_Client_ImageView_Left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:background="@drawable/moxie_client_banner_back"/>
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/moxie_client_actionbar_left_text"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:text="@string/moxie_client_actionbar_left_text"
+        android:textSize="14sp"
+        android:layout_toRightOf="@id/Moxie_Client_RelativeLayout_Title_Left"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="8dp"
+        android:paddingRight="5dp"
+        android:visibility="gone"
+        android:textColor="@android:color/white"
+        android:gravity="center_vertical"/>
+
+    <RelativeLayout
+        android:id="@+id/Moxie_Client_RelativeLayout_Title_Right"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:paddingRight="10dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true">
+
+        <ImageView
+            android:id="@+id/Moxie_Client_ImageView_Right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:background="@drawable/moxie_client_banner_refresh"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

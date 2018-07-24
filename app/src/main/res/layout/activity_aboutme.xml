@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#efeff4">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/about_banner_mx" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:padding="15dp"
+        android:orientation="horizontal"
+        android:background="#ffffffff">
+
+        <ImageView
+            android:id="@+id/ivSWHZ"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/about_icn_swhz"
+            android:scaleType="fitStart" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:textColor="#000000"
+            android:layout_toRightOf="@id/ivSWHZ"
+            android:textSize="14dp"
+            android:text="商务洽谈" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:textColor="#8e8e93"
+            android:textSize="14dp"
+            android:text="张俊九 180 1733 9927" />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:padding="15dp"
+        android:orientation="horizontal"
+        android:background="#ffffffff">
+
+        <ImageView
+            android:id="@+id/ivEmail"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/about_icn_email"
+            android:scaleType="fitStart" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:textColor="#000000"
+            android:layout_toRightOf="@id/ivEmail"
+            android:textSize="14dp"
+            android:text="Email" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:textColor="#8e8e93"
+            android:textSize="14dp"
+            android:text="win@51dojo.com" />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/rlSetting"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:padding="15dp"
+        android:orientation="horizontal"
+        android:background="#ffffffff">
+
+        <ImageView
+            android:id="@+id/ivSet"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/about_icn_sz"
+            android:scaleType="fitStart" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:textColor="#000000"
+            android:layout_toRightOf="@id/ivSet"
+            android:textSize="14dp"
+            android:text="设置" />
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/about_icn_go"
+            android:scaleType="fitStart" />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:padding="15dp"
+        android:orientation="horizontal"
+        android:background="#ffffffff">
+
+        <ImageView
+            android:id="@+id/ivVersion"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/about_icn_bbh"
+            android:scaleType="fitStart" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:textColor="#000000"
+            android:layout_toRightOf="@id/ivVersion"
+            android:textSize="14dp"
+            android:text="版本号" />
+
+
+        <ImageView
+            android:id="@+id/ivVersionNew"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@+id/tvVersion"
+            android:src="@drawable/about_icn_new"
+            android:visibility="gone"
+            android:scaleType="fitStart" />
+
+        <TextView
+            android:id="@+id/tvVersion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:textColor="#8e8e93"
+            android:textSize="14dp"
+            android:text="" />
+
+    </RelativeLayout>
+
+</LinearLayout>

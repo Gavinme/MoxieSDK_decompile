@@ -1,0 +1,47 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/moxie_mailimport_color_gray_5"
+    tools:mContext=".MainActivity">
+
+    <com.moxie.client.widget.TitleLayout
+        android:id="@+id/MoxieClientTitleLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="48dp"
+        android:background="@color/moxie_mailimport_main_blue_title"
+        android:fitsSystemWindows="true" />
+
+    <FrameLayout
+        android:id="@+id/moxie_client_fragment_main"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/MoxieClientTitleLayout">
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/moxie_client_fragment_agreement"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:visibility="gone"
+        android:layout_below="@id/MoxieClientTitleLayout">
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/moxie_client_fragment_importing"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:visibility="gone"
+        android:layout_below="@id/MoxieClientTitleLayout">
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/third_party_view_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+</RelativeLayout>

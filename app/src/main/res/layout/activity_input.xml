@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorGrayDark"
+    android:orientation="vertical">
+
+    <com.moxie.crawler.common.TitleLayout
+        android:id="@+id/TitleLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="48dp"
+        android:background="#FF2A2F33" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@color/colorWhite"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="65dp"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:minWidth="65dp"
+                android:text="ApiKey"
+                android:textColor="@color/colorBlack"
+                android:textSize="14sp" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorGray"
+                android:hint="请输入ApiKey"
+                android:textColorHint="@color/colorGray"
+                android:textSize="14sp"
+                android:id="@+id/editTextApiKey" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="65dp"
+                android:layout_height="wrap_content"
+                android:minWidth="65dp"
+                android:text="Token"
+                android:textColor="@color/colorBlack"
+                android:textSize="14sp"
+                android:gravity="left" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="请输入Token"
+                android:textColorHint="@color/colorGray"
+                android:textColor="@color/colorGray"
+                android:id="@+id/editTextToken"
+                android:textSize="14sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:orientation="horizontal"
+            android:gravity="left">
+
+            <TextView
+                android:layout_width="65dp"
+                android:layout_height="wrap_content"
+                android:gravity="center|left"
+                android:minWidth="65dp"
+                android:text="用户ID"
+                android:textColor="@color/colorBlack"
+                android:textSize="14sp" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="请输入UserId"
+                android:textColorHint="@color/colorGray"
+                android:textColor="@color/colorGray"
+                android:id="@+id/editTextUserId"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="65dp"
+                android:layout_height="wrap_content"
+                android:gravity="center|left"
+                android:minWidth="65dp"
+                android:text="Banner背景色"
+                android:textColor="@color/colorBlack"
+                android:textSize="14sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:id="@+id/editTextBannerBgColor"
+                android:background="#0099cc"
+                android:layout_marginLeft="10dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="65dp"
+                android:layout_height="wrap_content"
+                android:gravity="center|left"
+                android:minWidth="65dp"
+                android:text="Banner文字颜色"
+                android:textColor="@color/colorBlack"
+                android:textSize="14sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:id="@+id/editTextBannerTxtColor"
+                android:background="#0099cc"
+                android:layout_marginLeft="10dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="65dp"
+                android:layout_height="wrap_content"
+                android:gravity="center|left"
+                android:minWidth="65dp"
+                android:text="主题色"
+                android:textColor="@color/colorBlack"
+                android:textSize="14sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:id="@+id/editTextThemeColor"
+                android:background="#0099cc"
+                android:layout_marginLeft="10dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="65dp"
+                android:layout_height="wrap_content"
+                android:gravity="center|left"
+                android:minWidth="65dp"
+                android:text="用户使用协议"
+                android:textColor="@color/colorBlack"
+                android:textSize="14sp" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="请输入用户使用协议URL地址"
+                android:textColorHint="@color/colorGray"
+                android:textColor="@color/colorGray"
+                android:id="@+id/editTextAgreementUrl"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/button_radius_5dip_blue"
+            android:textColor="@color/colorWhite"
+            android:text="设置"
+            android:textSize="14sp"
+            android:id="@+id/buttonConfirm" />
+
+    </LinearLayout>
+
+</LinearLayout>

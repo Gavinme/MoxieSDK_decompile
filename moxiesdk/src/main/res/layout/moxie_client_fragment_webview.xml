@@ -1,0 +1,47 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout_Content"
+    android:clipChildren="false"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.moxie.client.widget.CustomWebView
+        android:id="@+id/CustomWebView_Main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipChildren="false"
+        android:layout_above="@+id/linear_bottom" />
+
+    <ImageView
+        android:id="@+id/ImageView_Bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <FrameLayout
+        android:id="@+id/ProgressBar_Main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ProgressBar
+            android:layout_width="25dip"
+            android:layout_height="25dip"
+            android:layout_gravity="center"
+            android:indeterminateDrawable="@drawable/moxie_mailimport_custom_progress" />
+    </FrameLayout>
+
+
+    <LinearLayout
+        android:id="@+id/linear_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone" />
+
+    <ProgressBar
+        android:id="@+id/webview_top_progressbar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:progressDrawable="@drawable/moxie_client_progress_horizontal_progress"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"/>
+
+</RelativeLayout>

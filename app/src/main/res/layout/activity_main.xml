@@ -1,0 +1,67 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#efeff4"
+    android:scrollbars="none">
+
+    <FrameLayout
+        android:id="@+id/frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:layout_above="@+id/rlTab">
+    </FrameLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlTab"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#ffffff"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="10dp">
+
+        <RadioGroup
+            android:id="@+id/radiogp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:button="@null"
+                android:background="@null"
+                android:scaleX="0.8"
+                android:scaleY="0.8"
+                android:drawableTop="@drawable/radiobutton_bigdata"
+                android:text="数据时代"
+                android:textSize="16dp"
+                android:textColor="#ff9500"
+                android:id="@+id/rbhome"
+                android:checked="true" />
+
+            <RadioButton
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:button="@null"
+                android:background="@null"
+                android:scaleX="0.8"
+                android:scaleY="0.8"
+                android:drawableTop="@drawable/radiobutton_aboutme"
+                android:textColor="#8e8e93"
+                android:text="关于我们"
+                android:textSize="16dp"
+                android:id="@+id/rbproduct"
+                android:checked="false" />
+
+        </RadioGroup>
+
+    </RelativeLayout>
+
+</RelativeLayout>
