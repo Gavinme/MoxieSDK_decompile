@@ -1,5 +1,5 @@
 # MoxieSDK_decompile
-`MoxieSDK`的完整源码，可编译运行，仅供抓取学习和参考。
+`MoxieSDK`的完整源码，可编译运行，仅供抓取学习和参考。[下载apk!](https://github.com/CarryGanLove/MoxieSDK_decompile/releases)
 
 ### MoxieSDK
 
