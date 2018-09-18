@@ -1,9 +1,7 @@
 package com.moxie.client.fragment;
 
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
+import org.greenrobot.eventbus.EventBus;
+
 import com.moxie.client.fragment.mvp.contract.WebViewECV3Contract.Presenter;
 import com.moxie.client.fragment.mvp.contract.WebViewECV3Contract.View;
 import com.moxie.client.fragment.mvp.presenter.WebViewECV3Presenter;
@@ -12,14 +10,21 @@ import com.moxie.client.model.SiteAccountInfo;
 import com.moxie.client.utils.Assert;
 import com.moxie.client.utils.ErrorHandle;
 import com.tencent.smtt.sdk.CookieManager;
-import org.greenrobot.eventbus.EventBus;
+
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
 
 /* compiled from: TbsSdkJava */
 public class WebViewECV3Fragment extends BaseWebViewFragment implements View {
     private Presenter i;
 
+    @Override
     public android.view.View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
         try {
+            Log.e("gq", "onCreateView");
             super.onCreateView(layoutInflater, viewGroup, bundle);
             new WebViewECV3Presenter(this, getArguments()).b();
             return this.b;
@@ -59,6 +64,7 @@ public class WebViewECV3Fragment extends BaseWebViewFragment implements View {
         }
     }
 
+    @Override
     public void onDestroy() {
         if (this.i != null) {
             this.i.a();

@@ -44,7 +44,7 @@ public class WebViewOfficialH5Fragment extends BaseWebViewFragment {
     private String s;
 
     @NotProguard
-    /* compiled from: TbsSdkJava */
+            /* compiled from: TbsSdkJava */
     class MoxieJavaScriptInterface extends BaseJavaScriptInterfaceImpl {
         MoxieJavaScriptInterface() {
         }
@@ -91,7 +91,8 @@ public class WebViewOfficialH5Fragment extends BaseWebViewFragment {
                         }
                         WebViewOfficialH5Fragment.this.j.l(trim);
                         WebViewOfficialH5Fragment.this.j
-                                .p(CookieManager.getInstance().getCookie(WebViewOfficialH5Fragment.this.customWebView.getUrl()));
+                                .p(CookieManager.getInstance()
+                                        .getCookie(WebViewOfficialH5Fragment.this.customWebView.getUrl()));
                         EventBus.getDefault().post(WebViewOfficialH5Fragment.this.j);
                         EventBus.getDefault().post(new LoginSubmitStart("提交登录...", WebViewOfficialH5Fragment.this.j));
                         WebViewOfficialH5Fragment.this.n = true;
@@ -116,6 +117,7 @@ public class WebViewOfficialH5Fragment extends BaseWebViewFragment {
         }
     }
 
+    @Override
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
         try {
             super.onCreateView(layoutInflater, viewGroup, bundle);
@@ -157,11 +159,12 @@ public class WebViewOfficialH5Fragment extends BaseWebViewFragment {
             this.l.execute(new String[] {this.p, this.k.i(), this.k.j()});
             this.customWebView.addJavascriptInterface(new MoxieJavaScriptInterface(), "android");
             a(new OnWebViewClientListener() {
-
-                public final void a(String str) {
+                @Override
+                public final void shouldOverrideUrlLoading(String str) {
                 }
 
-                public final void b(String str) {
+                @Override
+                public final void onPageFinished(String str) {
                     WebViewOfficialH5Fragment.this.i.post(new Runnable() {
 
                         public void run() {
@@ -170,7 +173,8 @@ public class WebViewOfficialH5Fragment extends BaseWebViewFragment {
                     });
                 }
 
-                public final boolean a() {
+                @Override
+                public final boolean shouldOverrideUrlLoading() {
                     WebViewOfficialH5Fragment.this.c(WebViewOfficialH5Fragment.this.k.k());
                     return false;
                 }
@@ -241,6 +245,7 @@ public class WebViewOfficialH5Fragment extends BaseWebViewFragment {
         loadUrl("window.mxGetAccountInfoCallback('" + jSONObject.toString() + "')");
     }
 
+    @Override
     public void onDestroy() {
         try {
             if (!(this.l == null || this.l.b())) {

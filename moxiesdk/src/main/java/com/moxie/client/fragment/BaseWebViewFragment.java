@@ -11,6 +11,7 @@ import com.moxie.client.widget.TitleLayout;
 import com.tencent.smtt.export.external.interfaces.ConsoleMessage;
 import com.tencent.smtt.export.external.interfaces.ConsoleMessage.MessageLevel;
 import com.tencent.smtt.export.external.interfaces.GeolocationPermissionsCallback;
+import com.tencent.smtt.export.external.interfaces.JsPromptResult;
 import com.tencent.smtt.export.external.interfaces.JsResult;
 import com.tencent.smtt.export.external.interfaces.SslError;
 import com.tencent.smtt.export.external.interfaces.SslErrorHandler;
@@ -34,6 +35,7 @@ import android.net.Uri;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -55,17 +57,19 @@ public abstract class BaseWebViewFragment extends Fragment {
 
     /* compiled from: TbsSdkJava */
     public static class OnWebViewClientListener {
-        public void a(String str) {
+
+        public void shouldOverrideUrlLoading(String str) {
         }
 
-        public void b(String str) {
+        public void onPageFinished(String str) {
         }
 
-        public boolean a() {
+        public boolean shouldOverrideUrlLoading() {
             return false;
         }
     }
 
+    @Override
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
         this.a = layoutInflater;
         this.b = layoutInflater.inflate(
@@ -172,7 +176,9 @@ public abstract class BaseWebViewFragment extends Fragment {
                 return true;
             }
 
+            @Override
             public boolean onJsAlert(WebView webView, String str, String str2, final JsResult jsResult) {
+                Log.e("gq", "onJsAlert " + str + str + jsResult);
                 try {
                     Builder builder = new Builder(this.a.getActivity());
                     builder.setMessage(str2);
@@ -196,6 +202,19 @@ public abstract class BaseWebViewFragment extends Fragment {
                 return true;
             }
 
+            @Override
+            public boolean onJsConfirm(WebView webView, String s, String s1, JsResult jsResult) {
+                Log.e("gq", "onJsAlert " + s + s1 + jsResult);
+                return super.onJsConfirm(webView, s, s1, jsResult);
+            }
+
+            @Override
+            public boolean onJsPrompt(WebView webView, String s, String s1, String s2, JsPromptResult jsPromptResult) {
+                Log.e("gq", "onJsAlert " + s1 + s2 + jsPromptResult);
+                return super.onJsPrompt(webView, s, s1, s2, jsPromptResult);
+            }
+
+            @Override
             public void onReceivedTitle(WebView webView, String str) {
                 super.onReceivedTitle(webView, str);
                 if (!TextUtils.isEmpty(str)) {
@@ -210,22 +229,25 @@ public abstract class BaseWebViewFragment extends Fragment {
                 this.a = BaseWebViewFragment.this;
             }
 
+            @Override
             public void onPageStarted(WebView webView, String str, Bitmap bitmap) {
                 super.onPageStarted(webView, str, bitmap);
                 if (this.a.i != null) {
-                    this.a.i.a(str);
+                    this.a.i.shouldOverrideUrlLoading(str);
                 }
                 this.a.d.setVisibility(View.VISIBLE);
             }
 
+            @Override
             public void onPageFinished(WebView webView, String str) {
                 super.onPageFinished(webView, str);
                 if (this.a.i != null) {
-                    this.a.i.b(str);
+                    this.a.i.onPageFinished(str);
                 }
                 this.a.d.setVisibility(View.GONE);
             }
 
+            @Override
             public void onReceivedSslError(WebView webView, final SslErrorHandler sslErrorHandler, SslError sslError) {
                 new Builder(this.a.getActivity()).setMessage("您访问的链接存在安全风险，仍要继续吗？")
                         .setPositiveButton("继续访问", new DialogInterface.OnClickListener() {
@@ -243,12 +265,14 @@ public abstract class BaseWebViewFragment extends Fragment {
                 }).show();
             }
 
+            @Override
             public void onReceivedError(WebView webView, int i, String str, String str2) {
                 super.onReceivedError(webView, i, str, str2);
                 new StringBuilder("onReceivedError errorCode=").append(i).append(",description=").append(str)
                         .append(",failingUrl=").append(str2);
             }
 
+            @Override
             public boolean shouldOverrideUrlLoading(WebView webView, String str) {
                 if (Uri.parse(str).getScheme().startsWith("file") || Uri.parse(str).getScheme().startsWith("http")
                         || "about:blank".equals(str)) {
@@ -256,15 +280,17 @@ public abstract class BaseWebViewFragment extends Fragment {
                 }
                 CommonMethod.a(this.a.getActivity(), str);//调用浏览器
                 if (this.a.i != null) {
-                    this.a.i.a();
+                    this.a.i.shouldOverrideUrlLoading();
                 }
                 return true;
             }
 
+            @Override
             public WebResourceResponse shouldInterceptRequest(WebView webView, String str) {
                 return null;
             }
 
+            @Override
             public WebResourceResponse shouldInterceptRequest(WebView webView, WebResourceRequest webResourceRequest) {
                 return null;
             }
@@ -354,6 +380,7 @@ public abstract class BaseWebViewFragment extends Fragment {
         }
     }
 
+    @Override
     public void onResume() {
         super.onResume();
         if (this.customWebView != null) {
@@ -361,6 +388,7 @@ public abstract class BaseWebViewFragment extends Fragment {
         }
     }
 
+    @Override
     public void onDestroy() {
         try {
             if (this.customWebView != null) {

@@ -32,6 +32,7 @@ import com.moxie.client.utils.Base64;
 import com.moxie.client.utils.ErrorHandle;
 import com.moxie.client.utils.SharedPreferMgr;
 import com.moxie.client.utils.ZipUtil;
+import com.orhanobut.logger.Logger;
 import com.proguard.annotation.NotProguard;
 import com.tencent.smtt.sdk.CookieManager;
 
@@ -70,7 +71,7 @@ public class WebViewECV3Presenter implements Presenter {
         @JavascriptInterface
         public void mxSaveScreenShot() {
 
-            Log.e(TAG, new LogEntry("mxSaveScreenShot").toString());
+            Logger.e(TAG, new LogEntry("mxSaveScreenShot").toString());
             EventBus.getDefault().post(new ScreenCaptureEvent());
         }
 
@@ -78,14 +79,14 @@ public class WebViewECV3Presenter implements Presenter {
         @JavascriptInterface
         public void mxCreateTask() {
 
-            Log.e(TAG, new LogEntry("mxCreateTask").toString());
+            Logger.e(TAG, new LogEntry("mxCreateTask").toString());
             WebViewECV3Presenter.f(WebViewECV3Presenter.this);
         }
 
         @NotProguard
         @JavascriptInterface
         public void mxRequest(final String str, final String str2) {
-            Log.e(TAG, new LogEntry("mxRequest", str, str2).toString());
+            Logger.e(TAG, new LogEntry("mxRequest", str, str2).toString());
             WebViewECV3Presenter.this.handler.post(new Runnable() {
 
                 public void run() {
@@ -97,7 +98,7 @@ public class WebViewECV3Presenter implements Presenter {
         @NotProguard
         @JavascriptInterface
         public void mxSaveRequest(final String str) {
-            Log.e(TAG, new LogEntry("mxSaveRequest", str).toString());
+            Logger.json(str);
             WebViewECV3Presenter.this.handler.post(new Runnable() {
 
                 public void run() {
@@ -109,7 +110,7 @@ public class WebViewECV3Presenter implements Presenter {
         @NotProguard
         @JavascriptInterface
         public void mxSaveCrawInfo(String str) {
-            Log.e(TAG, new LogEntry("mxSaveCrawInfo", str).toString());
+            Logger.e(TAG, new LogEntry("mxSaveCrawInfo", str).toString());
             try {
                 WebViewECV3Presenter.this.n = new JSONObject(str).optString("successUrlRegex");
             } catch (Throwable e) {
@@ -120,7 +121,7 @@ public class WebViewECV3Presenter implements Presenter {
         @NotProguard
         @JavascriptInterface
         public void mxSaveProgress(String str) {
-            Log.e(TAG, new LogEntry("mxSaveProgress", str).toString());
+            Logger.e(TAG, new LogEntry("mxSaveProgress", str).toString());
             if (GlobalParams.i().a() == null || TextUtils.isEmpty(GlobalParams.i().a().getLoadingViewText())) {
                 try {
                     JSONObject jSONObject = new JSONObject(str);
@@ -139,7 +140,7 @@ public class WebViewECV3Presenter implements Presenter {
         @NotProguard
         @JavascriptInterface
         public void mxGetAccountInfo(String str) {
-            Log.e(TAG, new LogEntry("mxGetAccountInfo", str).toString());
+            Logger.e(TAG, new LogEntry("mxGetAccountInfo", str).toString());
             WebViewECV3Presenter.this.handler.post(new Runnable() {
                 final /* synthetic */ WebViewECV3Presenter a;
 
@@ -178,7 +179,7 @@ public class WebViewECV3Presenter implements Presenter {
         @NotProguard
         @JavascriptInterface
         public void mxSaveAccountInfo(final String str) {
-            Log.e(TAG, new LogEntry("mxSaveAccountInfo", str).toString());
+            Logger.e(TAG, new LogEntry("mxSaveAccountInfo", str).toString());
             WebViewECV3Presenter.this.handler.post(new Runnable() {
                 final /* synthetic */ WebViewECV3Presenter b = WebViewECV3Presenter.this;
 
@@ -205,7 +206,7 @@ public class WebViewECV3Presenter implements Presenter {
         @NotProguard
         @JavascriptInterface
         public void mxSaveItem(String str) {
-            Log.e(TAG, new LogEntry("mxSaveItem", str).toString());
+            Logger.e(TAG, new LogEntry("mxSaveItem", str).toString());
             String optString;
             String optString2;
             Throwable th;
@@ -261,7 +262,7 @@ public class WebViewECV3Presenter implements Presenter {
         @NotProguard
         @JavascriptInterface
         public void mxUpload() {
-            Log.e(TAG, new LogEntry("mxUpload").toString());
+            Logger.e(TAG, new LogEntry("mxUpload").toString());
             if (!WebViewECV3Presenter.this.k) {
                 WebViewECV3Presenter.this.k = true;
                 WebViewECV3Presenter.k(WebViewECV3Presenter.this);
@@ -315,12 +316,13 @@ public class WebViewECV3Presenter implements Presenter {
     public final void b() {
         this.webViewECV3Fragment.a(new OnWebViewClientListener() {
 
-            public final void a(final String str) {
+            @Override
+            public final void shouldOverrideUrlLoading(final String str) {
                 if (!(WebViewECV3Presenter.this.cookieLoginInfo
                               == null || TextUtils.isEmpty(WebViewECV3Presenter.this.cookieLoginInfo.d()))) {
                     for (int i = 0; i < WebViewECV3Presenter.this.cookieLoginInfo.f(); i++) {
                         WebViewECV3Presenter.this.handler.postDelayed(new Runnable() {
-
+                            @Override
                             public void run() {
                                 WebViewECV3Presenter.this.webViewECV3Fragment
                                         .loadUrl(WebViewECV3Presenter.this.cookieLoginInfo
@@ -337,19 +339,22 @@ public class WebViewECV3Presenter implements Presenter {
                 });
             }
 
-            public final void b(final String str) {
+            @Override
+            public final void onPageFinished(final String str) {
+                Log.e("gq", "onPageFinished");
                 WebViewECV3Presenter.this.o = str;
                 WebViewECV3Presenter.this.handler.post(new Runnable() {
 
                     public void run() {
-                        Log.e("JavascriptInterface", "onPageFinished url= " + str);
+                        Logger.e("JavascriptInterface", "onPageFinished url= " + str);
                         new StringBuilder("onPageFinished url=").append(str);
                         WebViewECV3Presenter.e(WebViewECV3Presenter.this);
                     }
                 });
             }
 
-            public final boolean a() {
+            @Override
+            public final boolean shouldOverrideUrlLoading() {
                 WebViewECV3Presenter.this.a(WebViewECV3Presenter.this.cookieLoginInfo.k());
                 return false;
             }
@@ -465,6 +470,7 @@ public class WebViewECV3Presenter implements Presenter {
         try {
             jSONObject.put("itemName", jsBaseRequest.itemName);
             if (rep != null) {
+                Logger.e("JavascriptInterface", "itemName:" + jsBaseRequest.itemName + " " + new String(rep));
                 if ("post".equalsIgnoreCase(jsBaseRequest.type)) {
                     jSONObject.put("code", l);
                     new StringBuilder("sendRequest response(post):  item=").append(jsBaseRequest.itemName)
@@ -484,6 +490,7 @@ public class WebViewECV3Presenter implements Presenter {
                         .append(jsBaseRequest.url);
                 jSONObject.put("code", m);
             }
+
             webViewECV3Presenter.webViewECV3Fragment.loadUrl("requestFinishCallback('" + jSONObject.toString() + "')");
         } catch (Throwable e) {
             ErrorHandle.b("requstFinishCallback fail", e);

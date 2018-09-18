@@ -16,6 +16,7 @@ public class WebViewAgreementH5Fragment extends BaseWebViewFragment {
     private static String k = "";
     Handler i;
 
+    @Override
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
         try {
             super.onCreateView(layoutInflater, viewGroup, bundle);
@@ -24,10 +25,11 @@ public class WebViewAgreementH5Fragment extends BaseWebViewFragment {
             k = arguments.getString("script");
             this.i = new Handler(Looper.getMainLooper());
             this.customWebView.getSettings().setCacheMode(2);
-            this.customWebView.loadUrl(TextUtils.isEmpty(j) ? "https://api.51datakey.com/h5/agreement/agreement.html" : j);
+            this.customWebView
+                    .loadUrl(TextUtils.isEmpty(j) ? "https://api.51datakey.com/h5/agreement/agreement.html" : j);
             a(new OnWebViewClientListener() {
-
-                public final void b(String str) {
+                @Override
+                public final void onPageFinished(String str) {
                     WebViewAgreementH5Fragment.this.i.post(new Runnable() {
                         public void run() {
                             WebViewAgreementH5Fragment.a(WebViewAgreementH5Fragment.this);
@@ -42,7 +44,7 @@ public class WebViewAgreementH5Fragment extends BaseWebViewFragment {
             return null;
         }
     }
-
+    @Override
     protected final boolean a() {
         return true;
     }
@@ -55,17 +57,19 @@ public class WebViewAgreementH5Fragment extends BaseWebViewFragment {
         }
     }
 
+    @Override
     public void onResume() {
         super.onResume();
         if (this.customWebView != null) {
             this.customWebView.resumeTimers();
         }
     }
-
+    @Override
     public void onPause() {
         super.onPause();
     }
 
+    @Override
     public void onDestroy() {
         try {
             if (this.customWebView != null) {

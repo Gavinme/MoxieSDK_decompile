@@ -126,6 +126,7 @@ public class WebViewMoxieH5Fragment extends BaseWebViewFragment {
         }
     }
 
+    @Override
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
         View view = null;
         try {

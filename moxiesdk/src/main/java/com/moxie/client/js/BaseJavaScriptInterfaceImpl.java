@@ -26,29 +26,35 @@ public class BaseJavaScriptInterfaceImpl implements BaseJavaScriptInterface {
 
     @NotProguard
     @JavascriptInterface
+    @Override
     public void mxOpenUrl(String str) {
         EventBus.getDefault().post(new OpenThirdPartEvent(str));
     }
 
     @NotProguard
     @JavascriptInterface
+    @Override
     public void mxLog(String str) {
+        Log.e("JavascriptInterface", "mxlog: " + str);
     }
 
     @NotProguard
     @JavascriptInterface
+    @Override
     public void mxHideWebView() {
         EventBus.getDefault().post(new ShowOrHiddenWebView(false));
     }
 
     @NotProguard
     @JavascriptInterface
+    @Override
     public void mxShowWebView() {
         EventBus.getDefault().post(new ShowOrHiddenWebView(true));
     }
 
     @NotProguard
     @JavascriptInterface
+    @Override
     public String mxGetUserInfo() {
 
         JSONObject jSONObject = new JSONObject();
@@ -66,6 +72,7 @@ public class BaseJavaScriptInterfaceImpl implements BaseJavaScriptInterface {
 
     @NotProguard
     @JavascriptInterface
+    @Override
     public String getGlobalMap() {
         Log.e("JavascriptInterface", new LogEntry("getGlobalMap", this.mGlobalMap.toString())
                 .toString());
@@ -75,6 +82,7 @@ public class BaseJavaScriptInterfaceImpl implements BaseJavaScriptInterface {
 
     @NotProguard
     @JavascriptInterface
+    @Override
     public void setGlobalMap(String str) {
         try {
             Log.e("JavascriptInterface", new LogEntry("setGlobalMap", str)
@@ -93,12 +101,14 @@ public class BaseJavaScriptInterfaceImpl implements BaseJavaScriptInterface {
 
     @NotProguard
     @JavascriptInterface
+    @Override
     public String mxGetClientVersion() {
         return GlobalParams.i().h();
     }
 
     @NotProguard
     @JavascriptInterface
+    @Override
     public void mxCanLeave(String str) {
         try {
             JSONObject jSONObject = new JSONObject(str);
@@ -112,6 +122,7 @@ public class BaseJavaScriptInterfaceImpl implements BaseJavaScriptInterface {
 
     @NotProguard
     @JavascriptInterface
+    @Override
     public void mxOpenWebView(String str) {
         Log.e("JavascriptInterface", new LogEntry("mxOpenWebView", str).toString());
         try {
@@ -123,6 +134,7 @@ public class BaseJavaScriptInterfaceImpl implements BaseJavaScriptInterface {
 
     @NotProguard
     @JavascriptInterface
+    @Override
     public void setCallbackMap(String str) {
         try {
             Log.e("JavascriptInterface", new LogEntry("setCallbackMap", str)

@@ -244,183 +244,184 @@ public class MainActivity extends MainEventActivity implements OnClickListener {
     }
 
     private void start() {
-/*  339 */
+        /*  339 */
         this.isSDKStart = Boolean.valueOf(true);
-/*      */
-/*  342 */
+        /*      */
+        /*  342 */
         getSysConfigs();
-/*      */
-/*  344 */
+        /*      */
+        /*  344 */
         switch (this.mParam.getFunction()) {
-/*      */
+            /*      */
             case "email":
-/*  346 */
+                /*  346 */
                 if (this.mDirect.booleanValue()) {
-/*  347 */
+                    /*  347 */
                     openMailImportWebView();
                     return;
-/*      */
+                    /*      */
                 }
-/*  349 */
+                /*  349 */
                 openCommonWebView(Boolean.valueOf(false));
-/*  350 */
+                /*  350 */
                 return;
-/*      */
+            /*      */
             case "bank":
-/*  352 */
+                /*  352 */
                 openCommonWebView(this.mDirect);
-/*  353 */
+                /*  353 */
                 return;
-/*      */
+            /*      */
             case "qq":
-/*  355 */
+                /*  355 */
                 openQQZone();
-/*  356 */
+                /*  356 */
                 return;
-/*      */
+            /*      */
             case "linkedin":
-/*  358 */
+                /*  358 */
                 openLinkedInWebView();
-/*  359 */
+                /*  359 */
                 return;
-/*      */
-/*      */
+            /*      */
+            /*      */
             case "jingdong":
             case "taobao":
             case "alipay"://// TODO: 2017/9/14
                 initEC(this.mParam.getFunction());
-/*  364 */
+                /*  364 */
                 return;
-/*      */
+            /*      */
             case "carrier":
-/*      */
+                /*      */
             case "chsi":
-/*      */
+                /*      */
             case "fund":
-/*      */
+                /*      */
             case "insurance":
-/*      */
+                /*      */
             case "maimai":
-/*      */
+                /*      */
             case "sametrade":
-/*      */
+                /*      */
             case "security":
-/*      */
+                /*      */
             case "shixincourt":
-/*      */
+                /*      */
             case "tax":
-/*      */
+                /*      */
             case "zhengxin":
-/*      */
+                /*      */
             case "zhixingcourt":
-/*  376 */
+                /*  376 */
                 openCommonWebView(this.mDirect);
-/*  377 */
+                /*  377 */
                 return;
-/*      */
+            /*      */
         }
-/*  379 */
+        /*  379 */
         toast("缺少必填参数，userId、apiKey、function三者缺一不可!");
-/*      */
+        /*      */
     }
 
     private void initEC(String paramString) {
         android.util.Log.e("gq", "initEC");
-/*  395 */
+        /*  395 */
         String str = String.format(
                 UrlParser.a("https://api.51datakey.com/h5/importV3/index.html#/%s/?userId=%s&apiKey=%s&themeColor=%s",
-/*  393 */       this.mDirect.booleanValue()),
-/*  395 */       new Object[] {paramString, this.mParam
-/*  397 */.getUserId(), this.mParam
-/*  398 */.getApiKey(), this.mParam
-/*  399 */.getThemeColor().replace("#", "")});
-/*      */
-/*  401 */
+                        /*  393 */       this.mDirect.booleanValue()),
+                /*  395 */       new Object[] {paramString, this.mParam
+                        /*  397 */.getUserId(), this.mParam
+                        /*  398 */.getApiKey(), this.mParam
+                        /*  399 */.getThemeColor().replace("#", "")});
+        /*      */
+        /*  401 */
         if (paramString.equalsIgnoreCase("alipay"))
-/*  402 */ {//// TODO: 2017/9/14
+            /*  402 */ {//// TODO: 2017/9/14
             this.mTitleContent = getResources().getText(
                     getResources().getIdentifier("moxie_client_alipay_webview_title", "string", getPackageName()))
                     .toString();
         }
-/*  403 */
+        /*  403 */
         else if (paramString.equalsIgnoreCase("jingdong"))
-/*  404 */ {
+            /*  404 */ {
             this.mTitleContent = getResources().getText(
                     getResources().getIdentifier("moxie_client_jingdong_webview_title", "string", getPackageName()))
                     .toString();
         }
-/*      */
+        /*      */
         else {
-/*  406 */
+            /*  406 */
             this.mTitleContent = getResources().getText(
                     getResources().getIdentifier("moxie_client_taobao_webview_title", "string", getPackageName()))
                     .toString();
-/*      */
+            /*      */
         }
-/*  408 */
+        /*  408 */
         if (this.mParam.getSubType().equalsIgnoreCase("api")) {
-/*  409 */
+            /*  409 */
             showWebViewCommonFragment(this.mTitleContent, str);
             return;
-/*      */
+            /*      */
         }
-/*  411 */
+        /*  411 */
         if (paramString.equalsIgnoreCase("jingdong"))
-/*  412 */ {
+            /*  412 */ {
             paramString = "jd";
         }
-/*      */
+        /*      */
         Object localObject;
-/*  415 */
+        /*  415 */
         if (!TextUtils.isEmpty(SharedPreferMgr.b("moxie_sdk_all_ec_config")))
-/*      */ {
-/*      */
+            /*      */ {
+            /*      */
             try
-/*      */ {
-/*  418 */
+                /*      */ {
+                /*  418 */
                 if ((
-/*  418 */           localObject = LoadSiteConfigApi.a((String) SharedPreferMgr.b("moxie_sdk_all_ec_config"), "ec"))
+                        /*  418 */           localObject = LoadSiteConfigApi
+                        .a((String) SharedPreferMgr.b("moxie_sdk_all_ec_config"), "ec"))
                         != null)
-/*      */ {
-/*  420 */
+                    /*      */ {
+                    /*  420 */
                     if ((
-/*  420 */             localObject = ((SiteConfigsResponse) localObject).a) != null)
-/*      */ {
-/*  421 */
+                            /*  420 */             localObject = ((SiteConfigsResponse) localObject).a) != null)
+                        /*      */ {
+                        /*  421 */
                         for (localObject = ((ArrayList) localObject).iterator(); ((Iterator) localObject).hasNext(); ) {
                             SiteConfigItem localSiteConfigItem = (SiteConfigItem) ((Iterator) localObject).next();
-/*  422 */
+                            /*  422 */
                             if ((paramString + ".com").equalsIgnoreCase(localSiteConfigItem.b)) {
-/*  423 */
+                                /*  423 */
                                 if (localSiteConfigItem.c.k().equalsIgnoreCase("1"))
-/*      */ {
-/*  425 */
+                                    /*      */ {
+                                    /*  425 */
                                     showWebViewECFragment(paramString + ".com");
                                     return;
-/*  428 */
+                                    /*  428 */
                                 }
-/*      */
+                                /*      */
                                 showWebViewCommonFragment(this.mTitleContent, str);
-/*      */
+                                /*      */
                                 return;
-/*      */
+                                /*      */
                             }
                         }
-/*      */
+                        /*      */
                     }
-/*      */
+                    /*      */
                 }
-/*      */
+                /*      */
                 return;
-/*      */
+                /*      */
             } catch (Exception localException) {
-/*  435 */
+                /*  435 */
                 ErrorHandle.b("try open ec fail", localException);
-/*      */
+                /*      */
             }
-/*      */
+            /*      */
         }
-/*      */
+        /*      */
     }
 
     public void addView(View view) {
@@ -617,66 +618,126 @@ public class MainActivity extends MainEventActivity implements OnClickListener {
             toast("网络异常，请稍候再试!");
         } else if (checkPermission(permissionJson.b)) {
             runOnUiThread(new Runnable() {/*      */
-            public void run() {
-/*      */           try {
-/*  877 */             int i = 50;
-/*  878 */             while (i > 0) {
-/*  879 */               Thread.sleep(200L);
-/*  880 */               String str1 = "";
-/*  881 */               switch (MainActivity.this.mParam.getFunction()) {
-/*      */               case "bank":
-/*  883 */                 if (GlobalConstants.c.booleanValue()) {
-/*  884 */                   str1 = SharedPreferMgr.b("moxie_sdk_all_onlinebank_config");
-/*      */                 } else { MainActivity.this.start();
-/*      */                   return;
-/*      */                 }
-/*      */                 break;
-/*      */               case "email":
-/*  891 */                 str1 = SharedPreferMgr.b("moxie_sdk_all_mail_config");
-/*  892 */                 break;
-/*      */               case "alipay":
-/*      */               case "jingdong":
-/*      */               case "taobao":
-/*  896 */                 if (MainActivity.this.mParam.getSubType().equalsIgnoreCase("api")) {
-/*  897 */                   MainActivity.this.start();
-/*  898 */                   return;
-/*      */                 }
-/*  900 */                 str1 = SharedPreferMgr.b("moxie_sdk_all_ec_config");
-/*  901 */                 break;
-/*      */               case "qq":
-/*  903 */                 str1 = SharedPreferMgr.b("moxie_sdk_all_qzone_config");
-/*  904 */                 break;
-/*      */               case "linkedin":
-/*  906 */                 str1 = SharedPreferMgr.b("moxie_sdk_all_linkedin_config");
-/*  907 */                 break;
-/*      */               case "carrier":
-/*      */               case "chsi":
-/*      */               case "fund":
-/*      */               case "insurance":
-/*      */               case "maimai":
-/*      */               case "sametrade":
-/*      */               case "security":
-/*      */               case "shixincourt":
-/*      */               case "tax":
-/*      */               case "zhengxin":
-/*      */               case "zhixingcourt":
-/*  919 */                 MainActivity.this.start();
-/*  920 */                 return;
-/*      */               }
-/*      */
-/*  923 */               if (!TextUtils.isEmpty(str1)) {
-/*  924 */                 MainActivity.this.start();
-/*  925 */                 return;
-/*      */               }
-/*  927 */               i -= 1;
-/*      */             }
-/*  929 */             if (i <= 0)
-/*  930 */               MainActivity.this.toast("网络异常，请稍候再试!");
-/*      */             return;
-/*      */           } catch (Exception localException) {
-/*  933 */             ErrorHandle.b("MainActivity checkPermission error", localException);
-/*      */           }
-/*      */         }
+                public void run() {
+                    /*      */
+                    try {
+                        /*  877 */
+                        int i = 50;
+                        /*  878 */
+                        while (i > 0) {
+                            /*  879 */
+                            Thread.sleep(200L);
+                            /*  880 */
+                            String str1 = "";
+                            /*  881 */
+                            switch (MainActivity.this.mParam.getFunction()) {
+                                /*      */
+                                case "bank":
+                                    /*  883 */
+                                    if (GlobalConstants.c.booleanValue()) {
+                                        /*  884 */
+                                        str1 = SharedPreferMgr.b("moxie_sdk_all_onlinebank_config");
+                                        /*      */
+                                    } else {
+                                        MainActivity.this.start();
+                                        /*      */
+                                        return;
+                                        /*      */
+                                    }
+                                    /*      */
+                                    break;
+                                /*      */
+                                case "email":
+                                    /*  891 */
+                                    str1 = SharedPreferMgr.b("moxie_sdk_all_mail_config");
+                                    /*  892 */
+                                    break;
+                                /*      */
+                                case "alipay":
+                                    /*      */
+                                case "jingdong":
+                                    /*      */
+                                case "taobao":
+                                    /*  896 */
+                                    if (MainActivity.this.mParam.getSubType().equalsIgnoreCase("api")) {
+                                        /*  897 */
+                                        MainActivity.this.start();
+                                        /*  898 */
+                                        return;
+                                        /*      */
+                                    }
+                                    /*  900 */
+                                    str1 = SharedPreferMgr.b("moxie_sdk_all_ec_config");
+                                    /*  901 */
+                                    break;
+                                /*      */
+                                case "qq":
+                                    /*  903 */
+                                    str1 = SharedPreferMgr.b("moxie_sdk_all_qzone_config");
+                                    /*  904 */
+                                    break;
+                                /*      */
+                                case "linkedin":
+                                    /*  906 */
+                                    str1 = SharedPreferMgr.b("moxie_sdk_all_linkedin_config");
+                                    /*  907 */
+                                    break;
+                                /*      */
+                                case "carrier":
+                                    /*      */
+                                case "chsi":
+                                    /*      */
+                                case "fund":
+                                    /*      */
+                                case "insurance":
+                                    /*      */
+                                case "maimai":
+                                    /*      */
+                                case "sametrade":
+                                    /*      */
+                                case "security":
+                                    /*      */
+                                case "shixincourt":
+                                    /*      */
+                                case "tax":
+                                    /*      */
+                                case "zhengxin":
+                                    /*      */
+                                case "zhixingcourt":
+                                    /*  919 */
+                                    MainActivity.this.start();
+                                    /*  920 */
+                                    return;
+                                /*      */
+                            }
+                            /*      */
+                            /*  923 */
+                            if (!TextUtils.isEmpty(str1)) {
+                                /*  924 */
+                                MainActivity.this.start();
+                                /*  925 */
+                                return;
+                                /*      */
+                            }
+                            /*  927 */
+                            i -= 1;
+                            /*      */
+                        }
+                        /*  929 */
+                        if (i <= 0)
+                            /*  930 */ {
+                            MainActivity.this.toast("网络异常，请稍候再试!");
+                        }
+                        /*      */
+                        return;
+                        /*      */
+                    } catch (Exception localException) {
+                        /*  933 */
+                        ErrorHandle.b("MainActivity checkPermission error", localException);
+                        /*      */
+                    }
+                    /*      */
+                }
             });
         } else {
             toast("抱歉，您未开通此功能!");
@@ -915,6 +976,7 @@ public class MainActivity extends MainEventActivity implements OnClickListener {
 
     /**
      * 文件上传成功后（upload）在通知
+     *
      * @param uploadFileEvent
      */
     public void onEventMainThread(final UploadFileEvent uploadFileEvent) {
@@ -1237,6 +1299,7 @@ public class MainActivity extends MainEventActivity implements OnClickListener {
 
     /**
      * login
+     *
      * @param openOfficialWebView
      */
     public void onEventMainThread(OpenOfficialWebView openOfficialWebView) {
@@ -1428,6 +1491,7 @@ public class MainActivity extends MainEventActivity implements OnClickListener {
             runOnUiThread(new Runnable() {
                 final /* synthetic */ MainActivity b = MainActivity.this;
 
+                @Override
                 public void run() {
                     this.b.mWebViewECH5Fragment = new WebViewECV3Fragment();
                     Bundle bundle = new Bundle();
@@ -1569,19 +1633,19 @@ public class MainActivity extends MainEventActivity implements OnClickListener {
     /* JADX WARNING: inconsistent code. */
     /* Code decompiled incorrectly, please refer to instructions dump. */
     private void onBackInternal() {
-/* 1991 */
+        /* 1991 */
         int i = 1;
-/*      */
-/* 1993 */
+        /*      */
+        /* 1993 */
         if (!this.isSDKStart.booleanValue()) {
-/* 1994 */
+            /* 1994 */
             internalFinish();
-/* 1995 */
+            /* 1995 */
             return;
-/*      */
+            /*      */
         }
         internalFinish();
-/*      */
+        /*      */
     }
 
     private void handleWebFragmentBack(BaseWebViewFragment baseWebViewFragment) {

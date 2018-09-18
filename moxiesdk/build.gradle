@@ -31,6 +31,7 @@ dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile files('libs/tbs_sdk_thirdapp_v3.1.0.1034_43100_sharewithdownload_obfs_20170301_182143.jar')
     compile 'org.greenrobot:eventbus:3.0.0'
+    compile 'com.orhanobut:logger:2.2.0'
     debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
     releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
     compile 'com.android.support:appcompat-v7:23.1.1'
