@@ -71,7 +71,7 @@ public class WebViewECV3Presenter implements Presenter {
         @JavascriptInterface
         public void mxSaveScreenShot() {
 
-            Logger.e(TAG, new LogEntry("mxSaveScreenShot").toString());
+            Logger.e(new LogEntry("mxSaveScreenShot").toString());
             EventBus.getDefault().post(new ScreenCaptureEvent());
         }
 
@@ -79,14 +79,14 @@ public class WebViewECV3Presenter implements Presenter {
         @JavascriptInterface
         public void mxCreateTask() {
 
-            Logger.e(TAG, new LogEntry("mxCreateTask").toString());
+            Logger.e(new LogEntry("mxCreateTask").toString());
             WebViewECV3Presenter.f(WebViewECV3Presenter.this);
         }
 
         @NotProguard
         @JavascriptInterface
         public void mxRequest(final String str, final String str2) {
-            Logger.e(TAG, new LogEntry("mxRequest", str, str2).toString());
+            Logger.e(new LogEntry("mxRequest", str, str2).toString());
             WebViewECV3Presenter.this.handler.post(new Runnable() {
 
                 public void run() {
@@ -110,7 +110,7 @@ public class WebViewECV3Presenter implements Presenter {
         @NotProguard
         @JavascriptInterface
         public void mxSaveCrawInfo(String str) {
-            Logger.e(TAG, new LogEntry("mxSaveCrawInfo", str).toString());
+            Logger.e(new LogEntry("mxSaveCrawInfo", str).toString());
             try {
                 WebViewECV3Presenter.this.n = new JSONObject(str).optString("successUrlRegex");
             } catch (Throwable e) {
@@ -121,7 +121,7 @@ public class WebViewECV3Presenter implements Presenter {
         @NotProguard
         @JavascriptInterface
         public void mxSaveProgress(String str) {
-            Logger.e(TAG, new LogEntry("mxSaveProgress", str).toString());
+            Logger.e(new LogEntry("mxSaveProgress", str).toString());
             if (GlobalParams.i().a() == null || TextUtils.isEmpty(GlobalParams.i().a().getLoadingViewText())) {
                 try {
                     JSONObject jSONObject = new JSONObject(str);

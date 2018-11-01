@@ -307,7 +307,7 @@ public abstract class BaseWebViewFragment extends Fragment {
             try {
                 if (list.size() > 0) {
                     for (String b : list) {
-                        b(b);
+                        syncCookies(b);
                     }
                     return;
                 }
@@ -317,7 +317,7 @@ public abstract class BaseWebViewFragment extends Fragment {
             }
         }
         if (!TextUtils.isEmpty(str)) {
-            b(str);
+            syncCookies(str);
         }
     }
 
@@ -326,7 +326,7 @@ public abstract class BaseWebViewFragment extends Fragment {
      *
      * @param str
      */
-    private void b(String str) {
+    private void syncCookies(String str) {
         try {
             CookieSyncManager.createInstance(getActivity());
             CookieManager instance = CookieManager.getInstance();
@@ -347,7 +347,7 @@ public abstract class BaseWebViewFragment extends Fragment {
         this.i = onWebViewClientListener;
     }
 
-    public final Boolean b() {
+    public final Boolean syncCookies() {
         Boolean valueOf = Boolean.valueOf(false);
         try {
             if (this.customWebView.canGoBack()) {

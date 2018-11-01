@@ -1649,7 +1649,7 @@ public class MainActivity extends MainEventActivity implements OnClickListener {
     }
 
     private void handleWebFragmentBack(BaseWebViewFragment baseWebViewFragment) {
-        if (this.mResult != -1 || (baseWebViewFragment != null && !baseWebViewFragment.b().booleanValue())) {
+        if (this.mResult != -1 || (baseWebViewFragment != null && !baseWebViewFragment.syncCookies().booleanValue())) {
             internalFinish();
         } else if (this.isBackClicked) {
             this.mTitleLayout.setLeftTextVisibility(0);

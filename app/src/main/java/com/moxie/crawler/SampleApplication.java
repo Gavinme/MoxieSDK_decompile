@@ -25,6 +25,6 @@ public class SampleApplication extends Application {
                 .tag("JavascriptInterface")   // (Optional) Global tag for every log. Default PRETTY_LOGGER
                 .build();
 
-        Logger.addLogAdapter(new AndroidLogAdapter());
+        Logger.addLogAdapter(new AndroidLogAdapter(formatStrategy));
     }
 }
