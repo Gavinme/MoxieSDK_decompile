@@ -13,6 +13,7 @@ import com.moxie.client.fragment.LogEntry;
 import com.moxie.client.tasks.event.CanLeaveEvent;
 import com.moxie.client.tasks.event.OpenThirdPartEvent;
 import com.moxie.client.tasks.event.SetResultEvent;
+import com.orhanobut.logger.Logger;
 import com.proguard.annotation.NotProguard;
 
 import android.util.Log;
@@ -42,6 +43,7 @@ public class BaseJavaScriptInterfaceImpl implements BaseJavaScriptInterface {
     @JavascriptInterface
     @Override
     public void mxHideWebView() {
+        Logger.e(new LogEntry("mxHideWebView").toString());
         EventBus.getDefault().post(new ShowOrHiddenWebView(false));
     }
 
@@ -49,6 +51,7 @@ public class BaseJavaScriptInterfaceImpl implements BaseJavaScriptInterface {
     @JavascriptInterface
     @Override
     public void mxShowWebView() {
+        Logger.e(new LogEntry("mxShowWebView").toString());
         EventBus.getDefault().post(new ShowOrHiddenWebView(true));
     }
 

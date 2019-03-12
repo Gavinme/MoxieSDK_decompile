@@ -16,8 +16,8 @@ import android.widget.RadioButton;
 
 public class MainActivity extends FragmentActivity implements RadioButton.OnCheckedChangeListener{
 
-    private String mUserId = "cc1fa58e2f7c822b520648606d4dd344";                                  //合作方系统中的客户ID
-    private String mApiKey = "db247f1e435941e6b115fdb23ae116dd";      //获取任务状态时使用
+    private String mUserId = "cc1fa58e2f7c822b520648606d4dd345";                                  //合作方系统中的客户ID
+    private String mApiKey = "990810fe1bc243d9939738cc14ea688e";      //获取任务状态时使用
 
     private String mBannerColor = "#000000"; //标题栏背景色
     private String mTextColor = "#ffffff";  //标题栏字体颜色

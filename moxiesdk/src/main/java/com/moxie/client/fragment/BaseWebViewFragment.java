@@ -240,6 +240,7 @@ public abstract class BaseWebViewFragment extends Fragment {
 
             @Override
             public void onPageFinished(WebView webView, String str) {
+                Log.e("JavascriptInterface", "onPageFinished url " + str);
                 super.onPageFinished(webView, str);
                 if (this.a.i != null) {
                     this.a.i.onPageFinished(str);

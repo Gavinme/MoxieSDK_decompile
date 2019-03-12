@@ -282,26 +282,23 @@ public class HttpUrlConnection {
                 }
                 try {
                     if (headerFields.containsKey("content-encoding")) {
-                        Object obj;
+                        boolean obj = false;
                         for (String str32 : headerFields.get("content-encoding")) {
                             if ("gzip".equalsIgnoreCase(str32)) {
-                                obj = 1;
+                                obj = true;
                                 break;
                             }
                         }
-                        obj = null;
-                        if (obj != null) {
+                        if (obj) {
                             inputStream = new GZIPInputStream(inputStream);
                         }
                     }
-                    if (inputStream != null) {
-                        while (true) {
-                            responseCode = inputStream.read(bArr);
-                            if (responseCode == -1) {
-                                break;
-                            }
-                            byteArrayOutputStream.write(bArr, 0, responseCode);
+                    while (true) {
+                        responseCode = inputStream.read(bArr);
+                        if (responseCode == -1) {
+                            break;
                         }
+                        byteArrayOutputStream.write(bArr, 0, responseCode);
                     }
                     byte[] toByteArray = byteArrayOutputStream.toByteArray();
                     IOUtils.close(byteArrayOutputStream);

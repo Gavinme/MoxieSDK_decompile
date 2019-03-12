@@ -26,7 +26,7 @@ public class WebViewECV3Fragment extends BaseWebViewFragment implements View {
         try {
             Log.e("gq", "onCreateView");
             super.onCreateView(layoutInflater, viewGroup, bundle);
-            new WebViewECV3Presenter(this, getArguments()).b();
+            new WebViewECV3Presenter(this, getArguments()).callbackJs();
             return this.b;
         } catch (Throwable e) {
             ErrorHandle.b("WebViewECV3Fragment#onCreateView", e);

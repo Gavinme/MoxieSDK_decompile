@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 /* compiled from: TbsSdkJava */
 public class WebViewAgreementH5Fragment extends BaseWebViewFragment {
     private static String j = "";
-    private static String k = "";
+    private static String script = "";
     Handler i;
 
     @Override
@@ -22,7 +22,7 @@ public class WebViewAgreementH5Fragment extends BaseWebViewFragment {
             super.onCreateView(layoutInflater, viewGroup, bundle);
             Bundle arguments = getArguments();
             j = arguments.getString("url");
-            k = arguments.getString("script");
+            script = arguments.getString("script");
             this.i = new Handler(Looper.getMainLooper());
             this.customWebView.getSettings().setCacheMode(2);
             this.customWebView
@@ -84,8 +84,8 @@ public class WebViewAgreementH5Fragment extends BaseWebViewFragment {
     }
 
     static /* synthetic */ void a(WebViewAgreementH5Fragment webViewAgreementH5Fragment) {
-        if (!TextUtils.isEmpty(k)) {
-            webViewAgreementH5Fragment.customWebView.loadUrl("javascript:" + k);
+        if (!TextUtils.isEmpty(script)) {
+            webViewAgreementH5Fragment.customWebView.loadUrl("javascript:" + script);
         }
     }
 }

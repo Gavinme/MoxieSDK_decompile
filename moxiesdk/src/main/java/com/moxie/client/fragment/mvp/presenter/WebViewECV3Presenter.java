@@ -59,7 +59,7 @@ public class WebViewECV3Presenter implements Presenter {
     private boolean i = false;
     private boolean j = false;
     private boolean k = false;
-    private String n;
+    private String successUrlRegex;
     private String o;
 
     @NotProguard
@@ -102,7 +102,7 @@ public class WebViewECV3Presenter implements Presenter {
             WebViewECV3Presenter.this.handler.post(new Runnable() {
 
                 public void run() {
-                    WebViewECV3Presenter.d(WebViewECV3Presenter.this, str);
+                    WebViewECV3Presenter.saveRequest(WebViewECV3Presenter.this, str);
                 }
             });
         }
@@ -112,7 +112,7 @@ public class WebViewECV3Presenter implements Presenter {
         public void mxSaveCrawInfo(String str) {
             Logger.e(new LogEntry("mxSaveCrawInfo", str).toString());
             try {
-                WebViewECV3Presenter.this.n = new JSONObject(str).optString("successUrlRegex");
+                WebViewECV3Presenter.this.successUrlRegex = new JSONObject(str).optString("successUrlRegex");
             } catch (Throwable e) {
                 ErrorHandle.b("mxSaveCrawInfo fail", e);
             }
@@ -313,7 +313,7 @@ public class WebViewECV3Presenter implements Presenter {
         this.webViewECV3Fragment.b(str);
     }
 
-    public final void b() {
+    public final void callbackJs() {
         this.webViewECV3Fragment.a(new OnWebViewClientListener() {
 
             @Override
@@ -393,11 +393,11 @@ public class WebViewECV3Presenter implements Presenter {
     private byte[] PostResponse(JsBaseRequest jsBaseRequest) {
         byte[] bArr = null;
         try {
-            HashMap<String, String> map = newHashmap(jsBaseRequest.headers);
-            map.put("user-agent", this.cookieLoginInfo.k());
-            map.put("cookie", CookieManager.getInstance().getCookie(this.o));
+            HashMap<String, String> header = newHashmap(jsBaseRequest.headers);
+            header.put("user-agent", this.cookieLoginInfo.k());
+            header.put("cookie", CookieManager.getInstance().getCookie(this.o));
             HttpUrlConnection.getinstance();
-            bArr = HttpUrlConnection.getPostStringByCode(jsBaseRequest.url, jsBaseRequest.data, map, jsBaseRequest
+            bArr = HttpUrlConnection.getPostStringByCode(jsBaseRequest.url, jsBaseRequest.data, header, jsBaseRequest
                     .failCode);
         } catch (Throwable e) {
             ErrorHandle.b("excutePost fail", e);
@@ -422,8 +422,8 @@ public class WebViewECV3Presenter implements Presenter {
     }
 
     static /* synthetic */ void a(WebViewECV3Presenter webViewECV3Presenter, String str) {
-        if (!TextUtils.isEmpty(webViewECV3Presenter.n) && !TextUtils.isEmpty(str) && Pattern
-                .compile(webViewECV3Presenter.n).matcher(str).find()) {
+        if (!TextUtils.isEmpty(webViewECV3Presenter.successUrlRegex) && !TextUtils.isEmpty(str) && Pattern
+                .compile(webViewECV3Presenter.successUrlRegex).matcher(str).find()) {
             webViewECV3Presenter.b.p(CookieManager.getInstance().getCookie(str));
             webViewECV3Presenter.b.a(webViewECV3Presenter.cookieLoginInfo.k());
             new StringBuilder("init task cookiesUrl=").append(str).append(" cookie=")
@@ -455,7 +455,7 @@ public class WebViewECV3Presenter implements Presenter {
         }
     }
 
-    static /* synthetic */ void a(WebViewECV3Presenter webViewECV3Presenter, byte[] bArr, JsBaseRequest jsBaseRequest) {
+    static /* synthetic */ void save(WebViewECV3Presenter webViewECV3Presenter, byte[] bArr, JsBaseRequest jsBaseRequest) {
         if (bArr != null) {
             try {
                 webViewECV3Presenter.hashMap.put(jsBaseRequest.itemName, bArr);
@@ -465,7 +465,7 @@ public class WebViewECV3Presenter implements Presenter {
         }
     }
 
-    static /* synthetic */ void b(WebViewECV3Presenter webViewECV3Presenter, byte[] rep, JsBaseRequest jsBaseRequest) {
+    static /* synthetic */ void callbackJs(WebViewECV3Presenter webViewECV3Presenter, byte[] rep, JsBaseRequest jsBaseRequest) {
         JSONObject jSONObject = new JSONObject();
         try {
             jSONObject.put("itemName", jsBaseRequest.itemName);
@@ -530,7 +530,7 @@ public class WebViewECV3Presenter implements Presenter {
         }).start();
     }
 
-    static /* synthetic */ void d(final WebViewECV3Presenter webViewECV3Presenter, final String str) {
+    static /* synthetic */ void saveRequest(final WebViewECV3Presenter webViewECV3Presenter, final String str) {
         try {
             new Thread(new Runnable() {
 
@@ -539,9 +539,9 @@ public class WebViewECV3Presenter implements Presenter {
                         JsBaseRequest jsBaseRequest = JsBaseRequest.getJsRequest(str);
                         byte[] response =
                                 WebViewECV3Presenter.getbytes(webViewECV3Presenter, jsBaseRequest);//http request
-                        WebViewECV3Presenter.a(webViewECV3Presenter,/*call back result*/ response, jsBaseRequest);//put
+                        WebViewECV3Presenter.save(webViewECV3Presenter,/*call back result*/ response, jsBaseRequest);//put
                         // maps jsreq.itemName
-                        WebViewECV3Presenter.b(webViewECV3Presenter, response, jsBaseRequest);
+                        WebViewECV3Presenter.callbackJs(webViewECV3Presenter, response, jsBaseRequest);
                     } catch (Throwable e) {
                         ErrorHandle.b("sendRequest fail", e);
                     }
